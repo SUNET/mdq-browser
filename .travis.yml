@@ -1,0 +1,27 @@
+language: node_js
+
+node_js: 
+    - "8.15.0"
+
+install: 
+    - npm install 
+
+test:
+    - npm run test
+
+build:
+    - npm run build
+
+after_success: npm run coverage
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep-history: true
+    fqdn: origin.thiss.io
+    branch: master
+    repo: origin.thiss.io
+    on:
+       all_branches: true
+       condition: $TRAVIS_TAG =~ ^release-

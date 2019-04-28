@@ -1,0 +1,24 @@
+<div class="row" id="metadataIndex">
+    <div class="col-sm-3">
+        <ul class="nav nav-pills flex-column">
+        {{#links}}
+            <li class="nav-item"><a href="#{{name}}" class="nav-link" role="tab" data-toggle="tab">{{name}}</a></li>
+        {{/links}}
+        </ul>
+    </div>
+    <div class="col-sm-9">
+        <div class="tab-content">
+        {{#links}}
+            <div class="tab-pane" id="{{name}}">
+                <ul class="list-unstyled">
+                    {{#values}}
+                    <li>
+                        <a href="/list/#{{path}}">{{ name }}</a>
+                    </li>
+                    {{/values}}
+                </ul>
+            </div>
+        {{/links}}
+        </div>
+    </div>
+</div>

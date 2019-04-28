@@ -1,0 +1,16 @@
+<dl class="row">
+{{#status}}
+    <dt class="col-sm-2">{{key}}</dt>
+    <dd class="col-sm-10">
+        {{#value}}
+        {{value}}
+        {{/value}}
+        <dl class="row">
+        {{#values}}
+            <dt class="col-sm-4">{{key}}</dt>
+            <dd class="col-sm-8">{{value}}</dd>
+        {{/values}}
+        </dl>
+    </dd>
+{{/status}}
+</dl>

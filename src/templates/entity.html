@@ -1,0 +1,70 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" role="tab" id="title-tab-{{lid}}" href="#title-{{lid}}">{{title}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#xml-{{lid}}" data-toggle="tab" role="tab" id="xml-tab-{{lid}}">XML</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content" id="tab-content-{{lid}}">
+        <div class="tab-pane fade show active" id="title-{{lid}}" role="tabpanel" aria-labelledby="title-tab-{{lid}}">
+            <div class="row no-gutters h-100 pt-2 px-2">
+                <div class="col-md-4 text-center my-auto pb-10 h-100">
+                    <div class="icon-container my-2 px-2">
+                    {{#entity_icon_url}}
+                    <img src="{{entity_icon_url.url}}"
+                         width="{{entity_icon_url.width}}"
+                         height="{{entity_icon_url.height}}"
+                         onerror="this.onerror=''; this.width='0'; this.height='0'; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='"
+                         class="img-thumbnail icon" alt="{{title}}">
+                    <div class="card-text"><small class="text-muted">{{entity_icon_url.width}} x {{entity_icon_url.height}}</small></div>
+                    {{/entity_icon_url}}
+                    {{^entity_icon_url}}
+                        <small class="text-muted">No Icon Found</small>
+                    {{/entity_icon_url}}
+                    </div>
+                </div>
+                <div class="col-md-8 info-container my-2 px-2">
+                    <div class="card-body">
+                        <h5 class="card-title">{{tile}}</h5>
+                        {{#descr}}
+                        <p class="card-text">{{descr}}</p>
+                        {{/descr}}
+                        <dl>
+                            {{#privacy_statement_url}}
+                            <dt>Privacy Statement</dt>
+                            <dd><a href="{{privacy_statement_url}}">{{privacy_statement_url}}</a></dd>
+                            {{/privacy_statement_url}}
+                            {{#scope}}
+                            <dt>Scope</dt>
+                            <dd>{{scope}}</dd>
+                            {{/scope}}
+                            {{#domain}}
+                            <dt>Domain</dt>
+                            <dd>{{domain}}</dd>
+                            {{/domain}}
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="xml-{{lid}}" role="tabpanel" aria-labelledby="xml-tab-{{lid}}">
+            <div class="row no-gutters h-100 pt-2 px-2">
+                <div class="col-md-12">
+                    <div class="container-fluid">
+                        <pre class="small"><div data-href="{{entityID}}" data-action="xml"></div></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <i data-type="{{type}}" class="float-left" class="d-inline-block"></i>
+        <p class="card-text float-right d-inline-block">
+            <small class="text-muted">{{entityID}}</small>
+        </p>
+    </div>
+</div>

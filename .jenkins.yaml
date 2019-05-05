@@ -23,6 +23,7 @@ extra_jobs:
     upstream:
       - mdq-browser
     copy_artifacts:
+      project_name: mdq-browser
       include: dist
       target_dir: dist
 

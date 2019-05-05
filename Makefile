@@ -1,5 +1,6 @@
 VERSION=1.0.0
 NAME=mdq-browser
+REGISTRY=docker.sunet.se
 
 all: snyk build
 
@@ -28,10 +29,10 @@ docker: all docker_build docker_push
 
 docker_build:
 	docker build --no-cache=true -t $(NAME):$(VERSION) .
-	docker tag $(NAME):$(VERSION) docker.sunet.se/$(NAME):$(VERSION)
 
 docker_push:
-	docker push docker.sunet.se/$(NAME):$(VERSION)
+        docker tag $(NAME):$(VERSION) $(REGISTRY)/$(NAME):$(VERSION)
+	docker push $(REGISTRY)/$(NAME):$(VERSION)
 
 publish: all
 	@npm publish --access public

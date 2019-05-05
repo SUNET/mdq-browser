@@ -26,6 +26,7 @@ extra_jobs:
       project_name: mdq-browser
       include: dist/*
       target_dir: dist
+    archive_artifacts:
 
 script:
   - "make setup all"

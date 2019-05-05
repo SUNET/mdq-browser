@@ -14,7 +14,7 @@ extra_jobs:
   - name: docker-mdq-browser
     builders:
       - docker
-    docker_name: docker-mdq-browser
+    docker_name: mdq-browser
     managed_scripts:
       - docker_build_prep.sh
       - docker_tag.sh

@@ -8,7 +8,7 @@ clean_workspace: true
 build_in_docker:
   image: docker.sunet.se/sunet/docker-jenkins-node-job
 archive_artifacts:
-  include: dist
+  include: dist/*
 
 extra_jobs:
   - name: docker-mdq-browser
@@ -24,7 +24,7 @@ extra_jobs:
       - mdq-browser
     copy_artifacts:
       project_name: mdq-browser
-      include: dist
+      include: dist/*
       target_dir: dist
 
 script:

@@ -97,7 +97,7 @@ export function lookup(url, query, target) {
         });
         return count;
     }).catch(ex => {
-        notify_user(ex, 'warning', target);
+        target.html(alert_info("An error occured", ex, 'warning'));
         console.log(ex);
         return Promise.resolve(0);
     });

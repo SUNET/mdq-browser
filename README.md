@@ -1,6 +1,12 @@
 MDQ browser
 ===
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/SUNET/mdq-browser/graphs/commit-activity)
+[![Build Status](https://travis-ci.com/SUNET/mdq-browser.svg?branch=master)](https://travis-ci.com/SUNET/mdq-browser)
+[![Known Vulnerabilities](https://snyk.io/test/github/SUNET/mdq-browser/badge.svg)](https://snyk.io/test/github/SUNET/mdq-browser)
+
+
+
 This is an HTML5/JS application that closely mirrors (and improves upon) the built-in HTML app
 in pyFF.io. The intent is that this application be useful as a frontend to any MDQ server but
 mostly useful to servers that implement at least the pyff webfinger extension to MDQ.

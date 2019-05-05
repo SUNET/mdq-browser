@@ -7,13 +7,14 @@ slack:
 clean_workspace: true
 build_in_docker:
   image: docker.sunet.se/sunet/docker-jenkins-node-job
+archive_artifacts:
+  include: dist
 
 extra_jobs:
   - name: docker-mdq-browser
     builders:
       - docker
     docker_name: docker-mdq-browser
-    clean_workspace: false
     managed_scripts:
       - docker_build_prep.sh
       - docker_tag.sh
@@ -21,6 +22,9 @@ extra_jobs:
       github_push: false
     upstream:
       - mdq-browser
+    copy_artifacts:
+      include: dist
+      target_dir: dist
 
 script:
   - "make setup all"

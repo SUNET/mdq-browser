@@ -31,7 +31,7 @@ docker_build:
 	docker build --no-cache=true -t $(NAME):$(VERSION) .
 
 docker_push:
-        docker tag $(NAME):$(VERSION) $(REGISTRY)/$(NAME):$(VERSION)
+	docker tag $(NAME):$(VERSION) $(REGISTRY)/$(NAME):$(VERSION)
 	docker push $(REGISTRY)/$(NAME):$(VERSION)
 
 publish: all

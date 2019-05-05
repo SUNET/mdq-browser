@@ -5,6 +5,8 @@ triggers:
 slack:
   room: "devops-builds"
 clean_workspace: true
+build_in_docker:
+  image: docker.sunet.se/sunet/docker-jenkins-node-job
 
 extra_jobs:
   - name: docker-mdq-browser

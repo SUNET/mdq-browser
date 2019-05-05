@@ -1,5 +1,7 @@
-TARGET := ../origin.thiss.io/
-all: test snyk build
+VERSION=1.0.0
+NAME=mdq-browser
+
+all: snyk build
 
 snyk:
 	@npm run snyk-protect
@@ -22,6 +24,12 @@ cover:
 setup:
 	@npm install
 
-deploy: all
-	rsync -avz --exclude .git --exclude CNAME --exclude README.md --delete dist/ $(TARGET)
-	touch $(TARGET)/.nojekyll
+docker: all docker_build docker_push
+
+docker_build:
+	docker build --no-cache=true -t $(NAME):$(VERSION) .
+	docker tag $(NAME):$(VERSION) docker.sunet.se/$(NAME):$(VERSION)
+
+docker_push:
+	docker push docker.sunet.se/$(NAME):$(VERSION)
+

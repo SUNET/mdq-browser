@@ -13,6 +13,7 @@ extra_jobs:
     builders:
       - docker
     docker_name: docker-mdq-browser
+    clean_workspace: false
     managed_scripts:
       - docker_build_prep.sh
       - docker_tag.sh

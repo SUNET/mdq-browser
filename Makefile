@@ -33,3 +33,5 @@ docker_build:
 docker_push:
 	docker push docker.sunet.se/$(NAME):$(VERSION)
 
+publish: all
+	@npm publish --access public

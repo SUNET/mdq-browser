@@ -22,4 +22,4 @@ extra_jobs:
       - mdq-browser
 
 script:
-  - make
+  - env PATH=/usr/local/bin:$PATH make

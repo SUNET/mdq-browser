@@ -1,0 +1,20 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="status-tab" href="#status">Status</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="resources-tab" href="#resources">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="pipeline-tab" href="#pipeline">Pipeline</a></li>
+        </ul>
+    </div>
+    <div class="tab-content w-auto">
+        <div class="tab-pane fade show" id="status" role="tabpanel" aria-labelledby="status-tab">
+            <div class="card-body"><p class="card-text"><div data-href="/api/status" data-action="json"></div></p></div>
+        </div>
+        <div class="tab-pane fade show" id="resources" role="tabpanel" aria-labelledby="resources-tab">
+            <div class="card-body"><p class="card-text"><div data-href="/api/resources" data-action="json"></div></p></div>
+        </div>
+        <div class="tab-pane fade show" id="pipeline" role="tabpanel" aria-labelledby="pipeline-tab">
+            <div class="card-body"><p class="card-text"><pre data-href="/api/pipeline" data-action="yaml"></pre></p></div>
+        </div>
+    </div>
+</div>

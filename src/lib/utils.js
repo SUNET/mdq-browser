@@ -1,3 +1,8 @@
+
+const Hogan = require("hogan.js");
+const entity_template = Hogan.compile(require('!raw-loader!../templates/entity.html'));
+const links_template = Hogan.compile(require('!raw-loader!../templates/links.html'));
+
 export function get_json(url, params) {
     console.log(url);
     let u = new URL(url);
@@ -49,9 +54,8 @@ export function webfinger(base) {
     return get_json(u, {'rel': 'disco-json'});
 }
 
-export function notify_user(message, level, target) {
-    let m = $('<div></div>').addClass('alert').addClass('alert-' + level).text(message);
-    target.append(m);
+export function alert_info(title, message, level) {
+    return $('<div></div>').attr('role','alert').append($('<h4></h4>').addClass('alert-heading').text(title)).append($('<div></div>').text(message)).addClass('alert').addClass(`alert-${level}`)
 }
 
 export function compare(a, b, name) {
@@ -73,9 +77,6 @@ if (!String.prototype.encodeHTML) {
             .replace(/'/g, '&apos;');
     };
 }
-
-const Hogan = require("hogan.js");
-const entity_template = Hogan.compile(require('!raw-loader!./templates/entity.html'));
 
 export function lookup(url, query, target) {
     let div = $("<div></div>");
@@ -107,7 +108,7 @@ export function getUrlParameter(name) {
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
     var results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
+}
 
 /**
  * Apply an XSLT to transform XML
@@ -141,20 +142,17 @@ export function transformXML(xmlText, xsltText) {
     return (!transformedXml) ? xmlText : new XMLSerializer().serializeToString(transformedXml);
 }
 
-export function object2view(o) {
-    console.log(o);
-    if (o instanceof Object) {
-        return Object.keys(o).map(k => {
-            let v = object2view(o[k]);
-            let r = {'key': k, 'value': null, 'values': []};
-            if (v instanceof Array) {
-                r.values = v;
-            } else {
-                r.value = v;
-            }
-            return r;
+export function navlinks(navs, target) {
+    let links = Object.keys(navs).map( name => {
+        let value = {'name': decodeURIComponent(name) }
+        let members = Object.keys(navs[name]).map(nav => {
+            let o = navs[name][nav];
+            return {'name': decodeURIComponent(nav), 'path': o.path, value: nav}
         });
-    } else {
-        return `${o}`.replace(/^\s+|\s+$/g, '');
-    }
+        return {'name': value.name, 'values': members}
+    });
+    target.empty();
+    console.log(links);
+    target.append(links_template.render({'links': links}));
+    $(`a[href="#${links[0].name}"]`).click();
 }

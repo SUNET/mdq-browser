@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DotEnv = require("dotenv-webpack");
 const GoogleFontsPlugin = require("@beyonk/google-fonts-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -38,6 +39,9 @@ module.exports = {
            jQuery: "jquery"
         }),
         new DotEnv({systemvars: true}),
+        new CopyPlugin([
+            { from: './src/config.json', to: path.resolve(__dirname, 'dist') },
+        ]),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',

@@ -7,37 +7,41 @@ body {
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 
+/**
 .header,
 .marketing,
 .footer {
   padding-left: 0px;
   padding-right: 0px;
 }
+**/
+
 
 /* Custom page header */
 .header {
   padding-bottom: 4px;
-  border-bottom: 1px solid #e5e5e5;
+  //border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
 }
 
 .content h1, h2, h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
 }
 
 /* Custom page footer */
 .footer {
-  margin-top: 30px;
-  padding-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
   color: #777;
   /* border-top: 1px solid #f8f8f8; */
   background-color: #f8f8f8;
@@ -105,8 +109,7 @@ body {
 }
 
 .navbar {
-    margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border-bottom: 4px solid #e97d20;
 }
 
@@ -184,4 +187,24 @@ xscroll {
 yscroll {
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.json-object {
+    margin-left: 1rem;
+    padding-left: 0px;
+    list-style: none;
+}
+
+.json-top {
+    margin-left: 3px;
+    padding-left: 0px;
+    list-style: none;
+}
+
+pre.prettyprinted {
+    font-size: smaller;
+}
+
+li.jsontree_node {
+    list-style: none
 }

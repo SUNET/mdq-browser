@@ -4,7 +4,6 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><small id="server_name" class="spin-delay" data-spin-delay="10"></small></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,8 +36,21 @@
             <div class="clearfix"></div>
         </div>
         <div class="content">
-            <main role="main" class="spin-delay" data-spin-delay="100"></main>
+            <main role="main">
+                <div class="container-fluid d-flex h-100">
+                    <div class="spin-delay col-md-12 text-center fa-5x" data-spin-delay="50"></div>
+                </div>
+            </main>
             <div class="clearfix"></div>
+        </div>
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-sm-12">
+                        <small id="server_name" class="float-right spin-delay my-auto" data-spin-delay="10"></small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

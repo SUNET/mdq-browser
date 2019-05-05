@@ -43,7 +43,7 @@ The app looks for /config.json with the following entries:
 {
    "mdq_url": "<URL to the /entities context of the MDQ server>",
    "mdq_servername": "Some user-friendly name",
-   "pyff_apis": <true|false> 
+   "pyff_apis": true|false
 }
 ```
 

@@ -60,6 +60,10 @@ $(document).ready(function () {
                 if (nfo['Children']) {
                     nfo['HasChildren'] = true;
                 }
+                if (nfo['Entities']) {
+                    nfo['Count'] = nfo['Entities'].length;
+                    nfo['Entities'] = nfo['Entities'].map(e => {return {'entityID': e, 'href': '/list/#/entities/'+encodeURIComponent(e)}})
+                }
             });
             return {'values': data};
         }
@@ -74,17 +78,21 @@ $(document).ready(function () {
             });
         }
 
+        function update() {
+            get_json(baseurl + "/api/resources", {}).then(data => {
+                main.empty();
+                depth_first_idx(data, 0);
+                render_resource(data, main);
+                $('.resourcestatus').click();
+                setTimeout(update, 100000);
+            });
+        }
+
         $('#server_name').text(config.mdq_servername || process.env.MDQ_SERVERNAME || baseurl);
         $('#headline').text('Resources');
         $('#subheading').text(baseurl);
         if (config.pyff_apis) {
-            get_json(baseurl + "/api/resources", {}).then(data => {
-                main.empty();
-                console.log(data);
-                depth_first_idx(data, 0);
-                render_resource(data, main);
-                $('.resourcestatus').click();
-            });
+            update()
         }
     });
 });

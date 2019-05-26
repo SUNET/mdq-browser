@@ -52,6 +52,7 @@ $(document).ready(function () {
         $('#subheading').text(info);
         $('#search').val([query]);
 
+        console.log(baseurl+path);
         lookup(baseurl + path, query, main).then(count => {
             $('#count').text(`${count}`)
         });

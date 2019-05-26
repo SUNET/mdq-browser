@@ -23,8 +23,11 @@ module.exports = {
         list: `webpack-polyfill-injector?${JSON.stringify({
             modules: ['./src/list/index.js']
         })}!`,
-        about: `webpack-polyfill-injector?${JSON.stringify({
-            modules: ['./src/about/index.js']
+        status: `webpack-polyfill-injector?${JSON.stringify({
+            modules: ['./src/status/index.js']
+        })}!`,
+        resources: `webpack-polyfill-injector?${JSON.stringify({
+            modules: ['./src/resources/index.js']
         })}!`,
     },
     plugins: [
@@ -60,9 +63,15 @@ module.exports = {
             template: '!ejs-loader!src/index.html'
         }),
         new HtmlWebpackPlugin({
-            filename: 'about/index.html',
+            filename: 'status/index.html',
             inject: true,
-            chunks: ['about'],
+            chunks: ['status'],
+            template: '!ejs-loader!src/index.html'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'resources/index.html',
+            inject: true,
+            chunks: ['resources'],
             template: '!ejs-loader!src/index.html'
         }),
         new PolyfillInjectorPlugin({

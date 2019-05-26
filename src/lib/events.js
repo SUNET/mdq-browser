@@ -1,4 +1,4 @@
-import {base_url, get_json, get_xml, transformXML} from "./utils";
+import {base_url, get_json, get_xml, transformXML, template} from "./utils";
 import 'code-prettify';
 import {create} from "json-tree-viewer/libs/jsonTree/jsonTree"
 const yaml = require('js-yaml');
@@ -14,6 +14,10 @@ export function jq(config) {
             $('#searchform').submit();
         }
     });
+
+    if (config.pyff_apis) {
+        $('.pyff-api').show();
+    }
 
     $('.spin-delay').each(function () {
         let me = $(this);
@@ -50,9 +54,19 @@ export function jq(config) {
             get_json(baseurl + ref, {}).then(data => {
                 div.empty();
                 let tree = create(data, div[0]);
-                tree.expand(function(node) {
-                    return node.childNodes.length < 2;
+                tree.expand(function (node) {
+                    return node.childNodes.length < 3 || Number.isInteger(node.label);
                 })
+            });
+        } else if (action === 'template') {
+            get_json(baseurl + ref, {}).then(data => {
+                div.empty();
+                let tn = div.data('template');
+                for (let i = 0; i < data.length; i++) {
+                    data[i].pos = i;
+                }
+                let v = {'values': data};
+                div.html(template(tn, v))
             });
         } else if (action === 'yaml') {
             get_json(baseurl + ref, {}).then(data => {

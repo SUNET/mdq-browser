@@ -1,0 +1,110 @@
+{{#values}}
+<div id="li-{{idx}}" class="card mb-2 {{^Valid}}border border-danger{{/Valid}} {{#HasInvalids}}border border-warning{{/HasInvalids}}">
+    <div class="card-header {{^Valid}}alert alert-danger{{/Valid}} {{#HasInvalids}}alert alert-warning{{/HasInvalids}}">
+        <h5 class="card-title">{{Resource}}</h5>
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item"><a class="nav-link resourcestatus" data-toggle="tab" role="tab" id="status-{{idx}}-tab" href="#status-{{idx}}">Status</a></li>
+            {{#ISHTTP}}
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="http-{{idx}}-tab" href="#http-{{idx}}">HTTP</a></li>
+            {{/ISHTTP}}
+            {{#SchemeIdentifier}}
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="mdsl-{{idx}}-tab" href="#mdsl-{{idx}}">MDSL</a></li>
+            {{/SchemeIdentifier}}
+            {{#HasInvalids}}
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="invalids-{{idx}}-tab" href="#invalids-{{idx}}">Validation Errors</a></li>
+            {{/HasInvalids}}
+            {{#HasChildren}}
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" role="tab" id="ch-{{idx}}-tab" href="#ch-{{idx}}">Children</a></li>
+            {{/HasChildren}}
+        </ul>
+    </div>
+    <div class="tab-content w-auto">
+        <div class="tab-pane fade show" id="status-{{idx}}" role="tabpanel" aria-labelledby="status-{{idx}}-tab">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Valid</dt>
+                    <dd class="col-sm-9">{{Valid}}</dd>
+                    {{#Parser}}
+                    <dt class="col-sm-3">Type</dt>
+                    <dd class="col-sm-9">{{Parser}}</dd>
+                    {{/Parser}}
+                    {{#Job}}
+                    <dt class="col-sm-3">Current Job</dt>
+                    <dd class="col-sm-9">{{Job}}</dd>
+                    {{/Job}}
+                    {{#Exception}}
+                    <dt class="col-sm-3">Error</dt>
+                    <dd class="col-sm-9">{{Exception}}</dd>
+                    {{/Exception}}
+                    <dt class="col-sm-3">Last Seen</dt>
+                    {{#Last Seen}}
+                    <dd class="col-sm-9">{{Last Seen}}</dd>
+                    {{/Last Seen}}
+                    {{^Last Seen}}
+                    <dd class="col-sm-9">Never</dd>
+                    {{/Last Seen}}
+                    {{#Expriation Time}}
+                    <dt class="col-sm-3">Expiration Time</dt>
+                    <dd class="col-sm-9">{{Expiration Time}}</dd>
+                    {{/Expriation Time}}
+                    {{#Description}}
+                    <dt class="col-sm-3">Description</dt>
+                    <dd class="col-sm-9">{{Description}}</dd>
+                    {{/Description}}
+                </dl>
+            </div>
+        </div>
+        {{#ISHTTP}}
+        <div class="tab-pane fade show" id="http-{{idx}}" role="tabpanel" aria-labelledby="http-{{idx}}-tab">
+            <div class="card-body">
+                <dl class="row">
+                {{#HTTP}}
+                    <dt class="col-sm-3">{{key}}</dt>
+                    <dd class="col-sm-9">{{value}}</dd>
+                {{/HTTP}}
+                </dl>
+            </div>
+        </div>
+        {{/ISHTTP}}
+        {{#SchemeIdentifier}}
+        <div class="tab-pane fade show" id="mdsl-{{idx}}" role="tabpanel" aria-labelledby="mdsl-{{idx}}-tab">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Scheme Identifier</dt>
+                    <dd class="col-sm-9">{{SchemeIdentifier}}</dd>
+                    <dt class="col-sm-3">Scheme Territory</dt>
+                    <dd class="col-sm-9">{{SchemeTerritory}}</dd>
+                    <dt class="col-sm-3">Version</dt>
+                    <dd class="col-sm-9">{{Version}}</dd>
+                    <dt class="col-sm-3">Issuer Name</dt>
+                    <dd class="col-sm-9">{{IssuerName}}</dd>
+                </dl>
+            </div>
+        </div>
+        {{/SchemeIdentifier}}
+        {{#HasInvalids}}
+        <div class="tab-pane fade show" id="invalids-{{idx}}" role="tabpanel" aria-labelledby="invalids-{{idx}}-tab">
+            <div class="card-body">
+                <dl>
+                {{#Validation Errors}}
+                    <dt>{{key}}</dt>
+                    <dd>{{value}}</dd>
+                {{/Validation Errors}}
+                </dl>
+            </div>
+        </div>
+        {{/HasInvalids}}
+        {{#HasChildren}}
+        <div class="tab-pane fade show" id="ch-{{idx}}" role="tabpanel" aria-labelledby="ch-{{idx}}-tab">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                {{#Children}}
+                    <li><a href="#li-{{idx}}">{{Resource}}</a></li>
+                {{/Children}}
+                </ul>
+            </div>
+        </div>
+        {{/HasChildren}}
+    </div>
+</div>
+{{/values}}

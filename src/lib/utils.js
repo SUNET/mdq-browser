@@ -3,6 +3,15 @@ const Hogan = require("hogan.js");
 const entity_template = Hogan.compile(require('!raw-loader!../templates/entity.html'));
 const links_template = Hogan.compile(require('!raw-loader!../templates/links.html'));
 
+const templates = {};
+
+export function template(name, data) {
+    if (!templates.name) {
+        templates.name = Hogan.compile(require(`!raw-loader!../templates/${name}.html`));
+    }
+    return templates.name.render(data);
+}
+
 export function get_json(url, params) {
     console.log(url);
     let u = new URL(url);
@@ -155,4 +164,12 @@ export function navlinks(navs, target) {
     console.log(links);
     target.append(links_template.render({'links': links}));
     $(`a[href="#${links[0].name}"]`).click();
+}
+
+export function o2a(o) {
+    let lst = [];
+    Object.keys(o).forEach(k => {
+        lst.push({'key': k, 'value': o[k]})
+    });
+    return lst;
 }

@@ -1,0 +1,18 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-2">Object count</dt>
+            <dd class="col-sm-9">{{store.size}}</dd>
+            <dt class="col-sm-2">Version</dt>
+            <dd class="col-sm-9">{{version}}</dd>
+            <dt class ="col-sm-2">Jobs</dt>
+            <dd class="col-sm-9">
+                <ul class="list-unstyled">
+                    {{#jobs}}
+                    <li>{{id}} - next run time: {{next_run_time}}</li>
+                    {{/jobs}}
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</div>

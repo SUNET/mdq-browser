@@ -17,7 +17,7 @@ import {base_url, get_json, alert_info} from "../lib/utils";
 import {jq} from "../lib/events";
 require('../config.json');
 const Hogan = require("hogan.js");
-const about_template = Hogan.compile(require('!raw-loader!../templates/about.html'));
+const status_template = Hogan.compile(require('!raw-loader!../templates/status.html'));
 
 $(document).ready(function () {
 
@@ -30,14 +30,13 @@ $(document).ready(function () {
         jq(config);
 
         $('#server_name').text(config.mdq_servername || process.env.MDQ_SERVERNAME || baseurl);
-        $('#headline').text('Server Info');
+        $('#headline').text('Server Status');
         $('#subheading').text(baseurl);
-        main.empty();
+
         if (config.pyff_apis) {
-            main.html(about_template.render());
-            $('#status-tab').click();
-        } else {
-            main.html(alert_info('Notice', 'pyFF APIs are not available or are disabled in config', 'warning'))
+            get_json(baseurl + "/api/status", {}).then(data => {
+                main.html(status_template.render(data));
+            });
         }
     });
 });

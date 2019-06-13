@@ -5,14 +5,14 @@ ignore:
   'npm:braces:20180219':
     - popper > rijs.resdir > chokidar > anymatch > micromatch > braces:
         reason: None given
-        expires: '2019-05-21T18:54:08.953Z'
+        expires: '2019-07-13T13:17:01.807Z'
     - popper > rijs > rijs.resdir > chokidar > anymatch > micromatch > braces:
         reason: None given
-        expires: '2019-05-21T18:54:08.953Z'
+        expires: '2019-07-13T13:17:01.807Z'
   'npm:content-type-parser:20170905':
     - mock-browser > jsdom > content-type-parser:
         reason: None given
-        expires: '2019-05-21T18:54:08.954Z'
+        expires: '2019-07-13T13:17:01.807Z'
   'snyk:lic:npm:json-decycle:GPL-2.0':
     - json-decycle:
         reason: None given

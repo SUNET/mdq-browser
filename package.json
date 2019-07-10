@@ -12,7 +12,7 @@
     "url": "https://github.com/SUNET/mdq-browser/issues"
   },
   "scripts": {
-    "test": "snyk test && ./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register",
+    "test": "./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register",
     "lint": "node_modules/.bin/goodparts src",
     "cover": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
     "start": "webpack-dev-server --hot --json --open --config webpack.dev.js",

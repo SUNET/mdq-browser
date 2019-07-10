@@ -36,7 +36,7 @@ Run docker image
 ---
 
 ```
-# docker run -p 8080:80 -e MDQ_HOST=some.mdq.host -e MDQ_PORT=9999 -e PYFF_APIS=true mdq-browser:1.0.0
+# docker run -p 8080:80 -e MDQ_URL=https://some.mdq.host:9999/entities -e PYFF_APIS=true mdq-browser:1.0.0
 ```
 
 In addition to letting you navigate the MDQ server the contents is proxied on localhost:8080 for convenience. When the PYFF_APIS environment variable is set additional functions are available.

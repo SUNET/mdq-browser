@@ -10,8 +10,7 @@ module.exports = merge(common, {
    plugins: [
        //new BundleAnalyzerPlugin(),
        new webpack.EnvironmentPlugin({
-       BASE_URL: 'http://localhost:9000/',
-       MDQ_URL: 'http://localhost:8000/entities/',
+       MDQ_URL: 'http://localhost:8080/entities/',
        SEARCH_URL: '/entities/',
        LOGLEVEL: 'warn'
   })]

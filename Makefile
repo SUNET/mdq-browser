@@ -1,4 +1,4 @@
-VERSION=1.0.1
+VERSION:=$(shell jq -r .version package.json)
 NAME=mdq-browser
 REGISTRY=docker.sunet.se
 

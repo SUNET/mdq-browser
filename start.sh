@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mdq_url=${MDQ_URL:-"http://${MDQ_HOST}:${MDQ_PORT}/entities/"}
+mdq_url=${MDQ_URL:-"http://${HOSTPORT}/entities/"}
 pyff_apis=${PYFF_APIS:-false}
 mdq_servername=${MDQ_SERVERNAME:-""}
 

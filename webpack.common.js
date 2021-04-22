@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DotEnv = require("dotenv-webpack");
-const GoogleFontsPlugin = require("@beyonk/google-fonts-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 
 
@@ -31,12 +30,6 @@ module.exports = {
         })}!`,
     },
     plugins: [
-        new GoogleFontsPlugin({
-            fonts: [
-                { family: "Libre Franklin", variants: ["400","700"], subsets: ['latin-ext'] }
-            ],
-            local: true
-        }),
         new webpack.ProvidePlugin({
            $: "jquery",
            jQuery: "jquery"

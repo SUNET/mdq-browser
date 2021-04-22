@@ -37,7 +37,7 @@ export function get_xml(url, params) {
     let u = new URL(url);
     Object.keys(params).forEach(key => u.searchParams.append(key, params[key]));
     return fetch(u.href, {
-        headers: {'Accept': 'application/xml'}
+        headers: {'Accept': 'application/xml, application/samlmetadata+xml'}
     }).then(response => {
         if (response.status == 404) {
             throw new URIError("Entity not found in MDQ server");
@@ -45,7 +45,7 @@ export function get_xml(url, params) {
         return response;
     }).then(response => {
         let contentType = response.headers.get("content-type");
-        if (contentType && contentType.includes("application/xml")) {
+        if (contentType && (contentType.includes("application/xml") || contentType.includes("application/samlmetadata+xml"))) {
             return response.text();
         }
         throw new SyntaxError(`URL ${url} didn't return a response of the require type`);
